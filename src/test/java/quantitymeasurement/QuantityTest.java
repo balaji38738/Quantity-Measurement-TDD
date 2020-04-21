@@ -18,10 +18,9 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenDifferentReferences_shouldReturnNotSame() {
+    public void givenSameReference_shouldReturnEqual() {
         Feet feet1 = new Feet(0.0);
-        Feet feet2 = new Feet(0.0);
-        Assert.assertNotSame(feet1, feet2);
+        Assert.assertEquals(feet1, feet1);
     }
 
     @Test
