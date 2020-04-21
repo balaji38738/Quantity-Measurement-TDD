@@ -18,7 +18,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSameReference_shouldReturnEqual() {
+    public void givenSameReferenceOfFeet_shouldReturnEqual() {
         Feet feet1 = new Feet(0.0);
         Assert.assertEquals(feet1, feet1);
     }
@@ -47,5 +47,11 @@ public class QuantityTest {
     public void given1NullValueObject_shouldReturnNotEqual() {
         Inch inch1 = new Inch(0.0);
         Assert.assertNotEquals(inch1, null);
+    }
+
+    @Test
+    public void givenSameReferenceOfInch_shouldReturnEqual() {
+        Inch inch = new Inch(0.0);
+        Assert.assertEquals(inch, inch);
     }
 }
