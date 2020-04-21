@@ -43,4 +43,9 @@ public class QuantityTest {
         Assert.assertEquals(inch1, inch2);
     }
 
+    @Test
+    public void given1NullValueObject_shouldReturnNotEqual() {
+        Inch inch1 = new Inch(0.0);
+        Assert.assertNotEquals(inch1, null);
+    }
 }
