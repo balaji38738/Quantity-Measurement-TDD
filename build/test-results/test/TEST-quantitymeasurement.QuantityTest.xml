@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quantitymeasurement.QuantityTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-21T11:53:40" hostname="balaji-Inspiron-5559" time="0.001">
+  <properties/>
+  <testcase name="given0FeetAnd0Feet_shouldReturnEqual" classname="quantitymeasurement.QuantityTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
