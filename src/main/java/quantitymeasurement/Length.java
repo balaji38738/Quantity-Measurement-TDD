@@ -1,9 +1,13 @@
 package quantitymeasurement;
 
-public class Feet {
+public class Length {
+    enum Unit {FEET, INCH}
+
+    private final Unit unit;
     private final double value;
 
-    public Feet(double value) {
+    public Length(Unit unit, double value) {
+        this.unit = unit;
         this.value = value;
     }
 
@@ -11,7 +15,7 @@ public class Feet {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Feet feet = (Feet) o;
+        Length feet = (Length) o;
         return Double.compare(feet.value, value) == 0;
     }
 
