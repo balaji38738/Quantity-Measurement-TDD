@@ -174,7 +174,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void given1FeetAnd2Inch_shouldReturn4Inch() {
+    public void given1FeetAnd2Inch_shouldReturn14Inch() {
         Length feet = new Length(Unit.FEET, 1.0);
         Length inch = new Length(Unit.INCH, 2.0);
         double addition = operations.add(feet, inch);
@@ -182,9 +182,17 @@ public class QuantityTest {
     }
 
     @Test
-    public void given1FeetAnd1Feet_shouldReturn4Inch() {
+    public void given1FeetAnd1Feet_shouldReturn24Inch() {
         Length feet = new Length(Unit.FEET, 1.0);
         double addition = operations.add(feet, feet);
         Assert.assertEquals(24.0, addition, 0.0);
+    }
+
+    @Test
+    public void given2InchAnd2AndHalfCm_shouldReturn3Inch() {
+        Length inch = new Length(Unit.INCH, 2);
+        Length cm = new Length(Unit.CM, 2.5);
+        double addition = operations.add(inch, cm);
+        Assert.assertEquals(3.0, addition, 0.0);
     }
 }
