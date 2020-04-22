@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
+    Operations operations = new OperationsImpl();
+
     @Test
     public void given0FeetAnd0Feet_shouldReturnEqual() {
         Length feet1 = new Length(Unit.FEET, 0.0);
@@ -167,7 +169,6 @@ public class QuantityTest {
     @Test
     public void given2InchAnd2Inch_shouldReturn4Inch() {
         Length inch = new Length(Unit.INCH, 2.0);
-        Operations operations = new OperationsImpl();
         double addition = operations.add(inch, inch);
         Assert.assertEquals(4.0, addition, 0.0);
     }
@@ -176,8 +177,14 @@ public class QuantityTest {
     public void given1FeetAnd2Inch_shouldReturn4Inch() {
         Length feet = new Length(Unit.FEET, 1.0);
         Length inch = new Length(Unit.INCH, 2.0);
-        Operations operations = new OperationsImpl();
         double addition = operations.add(feet, inch);
         Assert.assertEquals(14.0, addition, 0.0);
+    }
+
+    @Test
+    public void given1FeetAnd1Feet_shouldReturn4Inch() {
+        Length feet = new Length(Unit.FEET, 1.0);
+        double addition = operations.add(feet, feet);
+        Assert.assertEquals(24.0, addition, 0.0);
     }
 }
