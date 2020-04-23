@@ -290,4 +290,23 @@ public class QuantityTest {
         boolean compareCheck = Unit.compare(fahrenheit, celsius);
         Assert.assertTrue(compareCheck);
     }
+
+    @Test
+    public void givenNegativeTemperature_shouldNotThrowException() throws QuantityException {
+        Quantity fahrenheit = new Quantity(Unit.FAHRENHEIT, -212.0);
+        Quantity celsius = new Quantity(Unit.CELSIUS, -100.0);
+        boolean compareCheck = Unit.compare(fahrenheit, celsius);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void givenTemperaturesForAddition_shouldThrowException() {
+        try {
+            Quantity fahrenheit = new Quantity(Unit.FAHRENHEIT, -212.0);
+            Quantity celsius = new Quantity(Unit.CELSIUS, -100.0);
+            operations.add(fahrenheit, celsius);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.NON_ADDITIVE_QUANTITY, e.type);
+        }
+    }
 }
