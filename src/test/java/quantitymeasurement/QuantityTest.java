@@ -222,4 +222,12 @@ public class QuantityTest {
             Assert.assertEquals(QuantityException.ExceptionType.UNLIKE_QUANTITIES, e.type);
         }
     }
+
+    @Test
+    public void givenLitreAndGallon_shouldReturnAdditionInLitre() {
+        Quantity gallon = new Quantity(Unit.GALLON, 1.0);
+        Quantity litre = new Quantity(Unit.LITRE, 3.78);
+        double volumeAddition = operations.add(gallon, litre);
+        Assert.assertEquals(7.57, volumeAddition, 0.1);
+    }
 }

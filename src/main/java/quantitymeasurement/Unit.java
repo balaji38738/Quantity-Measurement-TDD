@@ -4,8 +4,8 @@ public enum Unit {
     FEET(12.0, "length"), INCH(1.0, "length"),
     YARD(36.0, "length"), CM(0.4, "length"),
 
-    LITRE(1000, "volume"), GALLON(3780, "volume"),
-    ML(1, "volume");
+    LITRE(1, "volume"), GALLON(3.78, "volume"),
+    ML(0.001, "volume");
 
     String quantityName;
     double baseUnitConversion;
