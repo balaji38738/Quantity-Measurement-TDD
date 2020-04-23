@@ -1,7 +1,7 @@
 package quantitymeasurement;
 
 public class QuantityException  extends Exception {
-    public enum ExceptionType {UNLIKE_QUANTITY_COMPARISON};
+    public enum ExceptionType {UNLIKE_QUANTITIES};
 
     ExceptionType type;
 

@@ -211,4 +211,15 @@ public class QuantityTest {
         boolean compareCheck = Unit.compare(litre, ml);
         Assert.assertTrue(compareCheck);
     }
+
+    @Test
+    public void given1LitreAnd1Feet_shouldThrowException() {
+        Quantity feet = new Quantity(Unit.FEET, 1.0);
+        Quantity litre = new Quantity(Unit.LITRE, 1.0);
+        try {
+            boolean compareCheck = Unit.compare(litre, feet);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.UNLIKE_QUANTITIES, e.type);
+        }
+    }
 }
