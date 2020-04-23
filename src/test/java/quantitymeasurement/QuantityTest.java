@@ -217,7 +217,7 @@ public class QuantityTest {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         try {
-            boolean compareCheck = Unit.compare(litre, feet);
+            Unit.compare(litre, feet);
         } catch (QuantityException e) {
             Assert.assertEquals(QuantityException.ExceptionType.UNLIKE_QUANTITIES, e.type);
         }
@@ -244,7 +244,7 @@ public class QuantityTest {
         Quantity feet = new Quantity(Unit.FEET, 10.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         try {
-            double volumeAddition = operations.add(litre, feet);
+            operations.add(litre, feet);
         } catch (QuantityException e) {
             Assert.assertEquals("Unlike quantity addition", e.getMessage());
         }
@@ -253,7 +253,7 @@ public class QuantityTest {
     @Test
     public void givenNegativeLength_shouldThrowException() {
         try {
-            Quantity feet = new Quantity(Unit.FEET, -1.0);
+            new Quantity(Unit.FEET, -1.0);
         } catch (QuantityException e) {
             Assert.assertEquals("Value can't be negative", e.getMessage());
         }
