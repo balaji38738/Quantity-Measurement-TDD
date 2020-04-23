@@ -239,4 +239,14 @@ public class QuantityTest {
         Assert.assertEquals(2.0, volumeAddition, 0.0);
     }
 
+    @Test
+    public void givenLitreAndFeetForAddition_shouldThrowException() {
+        Quantity feet = new Quantity(Unit.FEET, 10.0);
+        Quantity litre = new Quantity(Unit.LITRE, 1.0);
+        try {
+            double volumeAddition = operations.add(litre, feet);
+        } catch (QuantityException e) {
+            Assert.assertEquals("Unlike quantity addition", e.getMessage());
+        }
+    }
 }
