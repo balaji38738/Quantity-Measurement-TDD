@@ -1,5 +1,5 @@
 package quantitymeasurement;
 
 public interface Operations {
-    double add(Length length1, Length length2);
+    double add(Quantity quantity1, Quantity quantity2);
 }
