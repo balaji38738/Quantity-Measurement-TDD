@@ -230,4 +230,12 @@ public class QuantityTest {
         double volumeAddition = operations.add(gallon, litre);
         Assert.assertEquals(7.57, volumeAddition, 0.1);
     }
+
+    @Test
+    public void givenLitreAndMl_shouldReturnAdditionInLitre() {
+        Quantity ml = new Quantity(Unit.ML, 1000.0);
+        Quantity litre = new Quantity(Unit.LITRE, 1.0);
+        double volumeAddition = operations.add(litre, ml);
+        Assert.assertEquals(2.0, volumeAddition, 0.0);
+    }
 }
