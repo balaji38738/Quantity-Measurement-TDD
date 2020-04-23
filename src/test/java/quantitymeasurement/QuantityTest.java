@@ -190,7 +190,7 @@ public class QuantityTest {
 
     @Test
     public void given2InchAnd2AndHalfCm_shouldReturn3Inch() {
-        Quantity inch = new Quantity(Unit.INCH, 2);
+        Quantity inch = new Quantity(Unit.INCH, 2.0);
         Quantity cm = new Quantity(Unit.CM, 2.5);
         double lengthSum = operations.add(inch, cm);
         Assert.assertEquals(3.0, lengthSum, 0.0);
@@ -198,9 +198,17 @@ public class QuantityTest {
 
     @Test
     public void given1GallonAnd3Point68Litres_shouldReturnEqual() throws QuantityException {
-        Quantity gallon = new Quantity(Unit.GALLON, 1);
+        Quantity gallon = new Quantity(Unit.GALLON, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 3.78);
         boolean compareCheck = Unit.compare(gallon, litre);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void given1LitreAnd1000Ml_shouldReturnEqual() throws QuantityException {
+        Quantity ml = new Quantity(Unit.ML, 1000.0);
+        Quantity litre = new Quantity(Unit.LITRE, 1.0);
+        boolean compareCheck = Unit.compare(litre, ml);
         Assert.assertTrue(compareCheck);
     }
 }
