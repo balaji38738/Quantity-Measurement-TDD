@@ -249,4 +249,13 @@ public class QuantityTest {
             Assert.assertEquals("Unlike quantity addition", e.getMessage());
         }
     }
+
+    @Test
+    public void givenNegativeLength_shouldThrowException() {
+        try {
+            Quantity feet = new Quantity(Unit.FEET, -1.0);
+        } catch (QuantityException e) {
+            Assert.assertEquals("Value can't be negative", e.getMessage());
+        }
+    }
 }
