@@ -4,8 +4,11 @@ public class Quantity {
     public final Unit UNIT;
     public final double VALUE;
 
-    public Quantity(Unit UNIT, double VALUE) {
+    public Quantity(Unit UNIT, double VALUE) throws QuantityException {
         this.UNIT = UNIT;
+        if (VALUE < 0.0)
+            throw new QuantityException(QuantityException.ExceptionType.INVALID_VALUE,
+                    "Value can't be negative");
         this.VALUE = VALUE;
     }
 

@@ -7,64 +7,64 @@ public class QuantityTest {
     Operations operations = new OperationsImpl();
 
     @Test
-    public void given0FeetAnd0Feet_shouldReturnEqual() {
+    public void given0FeetAnd0Feet_shouldReturnEqual() throws QuantityException {
         Quantity feet1 = new Quantity(Unit.FEET, 0.0);
         Quantity feet2 = new Quantity(Unit.FEET, 0.0);
         Assert.assertEquals(feet1, feet2);
     }
 
     @Test
-    public void given1NullObject_shouldReturnNotEqual() {
+    public void given1NullObject_shouldReturnNotEqual() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 0.0);
         Assert.assertNotEquals(feet, null);
     }
 
     @Test
-    public void givenSameReferenceOfFeet_shouldReturnEqual() {
+    public void givenSameReferenceOfFeet_shouldReturnEqual() throws QuantityException {
         Quantity feet1 = new Quantity(Unit.FEET, 0.0);
         Assert.assertEquals(feet1, feet1);
     }
 
     @Test
-    public void givenStringAndFeet_shouldReturnNotEqual() {
+    public void givenStringAndFeet_shouldReturnNotEqual() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 0.0);
         Assert.assertNotEquals(feet, "message");
     }
 
     @Test
-    public void given0FeetAnd1Feet_shouldReturnNotEqual() {
+    public void given0FeetAnd1Feet_shouldReturnNotEqual() throws QuantityException {
         Quantity feet1 = new Quantity(Unit.FEET, 0.0);
         Quantity feet2 = new Quantity(Unit.FEET, 1.0);
         Assert.assertNotEquals(feet1, feet2);
     }
 
     @Test
-    public void given0InchAnd0Inch_shouldReturnEqual() {
+    public void given0InchAnd0Inch_shouldReturnEqual() throws QuantityException {
         Quantity inch1 = new Quantity(Unit.INCH, 0.0);
         Quantity inch2 = new Quantity(Unit.INCH, 0.0);
         Assert.assertEquals(inch1, inch2);
     }
 
     @Test
-    public void given1NullValueObject_shouldReturnNotEqual() {
+    public void given1NullValueObject_shouldReturnNotEqual() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 0.0);
         Assert.assertNotEquals(inch, null);
     }
 
     @Test
-    public void givenSameReferenceOfInch_shouldReturnEqual() {
+    public void givenSameReferenceOfInch_shouldReturnEqual() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 0.0);
         Assert.assertEquals(inch, inch);
     }
 
     @Test
-    public void givenStringAndInch_shouldReturnNotEqual() {
+    public void givenStringAndInch_shouldReturnNotEqual() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 0.0);
         Assert.assertNotEquals(inch, "message");
     }
 
     @Test
-    public void given0InchAnd1Inch_shouldReturnNotEqual() {
+    public void given0InchAnd1Inch_shouldReturnNotEqual() throws QuantityException {
         Quantity inch1 = new Quantity(Unit.INCH, 0.0);
         Quantity inch2 = new Quantity(Unit.INCH, 1.0);
         Assert.assertNotEquals(inch1, inch2);
@@ -213,7 +213,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void given1LitreAnd1Feet_shouldThrowException() {
+    public void given1LitreAnd1Feet_shouldThrowException() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         try {
@@ -240,7 +240,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenLitreAndFeetForAddition_shouldThrowException() {
+    public void givenLitreAndFeetForAddition_shouldThrowException() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 10.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         try {
