@@ -167,14 +167,14 @@ public class QuantityTest {
     }
 
     @Test
-    public void given2InchAnd2Inch_shouldReturn4Inch() {
+    public void given2InchAnd2Inch_shouldReturn4Inch() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 2.0);
         double lengthSum = operations.add(inch, inch);
         Assert.assertEquals(4.0, lengthSum, 0.0);
     }
 
     @Test
-    public void given1FeetAnd2Inch_shouldReturn14Inch() {
+    public void given1FeetAnd2Inch_shouldReturn14Inch() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
         Quantity inch = new Quantity(Unit.INCH, 2.0);
         double lengthSum = operations.add(feet, inch);
@@ -182,14 +182,14 @@ public class QuantityTest {
     }
 
     @Test
-    public void given1FeetAnd1Feet_shouldReturn24Inch() {
+    public void given1FeetAnd1Feet_shouldReturn24Inch() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
         double lengthSum = operations.add(feet, feet);
         Assert.assertEquals(24.0, lengthSum, 0.0);
     }
 
     @Test
-    public void given2InchAnd2AndHalfCm_shouldReturn3Inch() {
+    public void given2InchAnd2AndHalfCm_shouldReturn3Inch() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 2.0);
         Quantity cm = new Quantity(Unit.CM, 2.5);
         double lengthSum = operations.add(inch, cm);
@@ -224,7 +224,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenLitreAndGallon_shouldReturnAdditionInLitre() {
+    public void givenLitreAndGallon_shouldReturnAdditionInLitre() throws QuantityException {
         Quantity gallon = new Quantity(Unit.GALLON, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 3.78);
         double volumeAddition = operations.add(gallon, litre);
@@ -232,10 +232,11 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenLitreAndMl_shouldReturnAdditionInLitre() {
+    public void givenLitreAndMl_shouldReturnAdditionInLitre() throws QuantityException {
         Quantity ml = new Quantity(Unit.ML, 1000.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         double volumeAddition = operations.add(litre, ml);
         Assert.assertEquals(2.0, volumeAddition, 0.0);
     }
+
 }
