@@ -258,4 +258,12 @@ public class QuantityTest {
             Assert.assertEquals("Value can't be negative", e.getMessage());
         }
     }
+
+    @Test
+    public void given1KgAnd1000Grams_shouldReturnEqual() throws QuantityException {
+        Quantity kg = new Quantity(Unit.KG, 1.0);
+        Quantity grams = new Quantity(Unit.GRAM, 1000.0);
+        boolean compareCheck = Unit.compare(kg, grams);
+        Assert.assertTrue(compareCheck);
+    }
 }
