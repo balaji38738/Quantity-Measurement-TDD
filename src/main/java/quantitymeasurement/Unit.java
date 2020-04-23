@@ -7,7 +7,8 @@ public enum Unit {
     LITRE(1.0, "volume"), GALLON(3.78, "volume"),
     ML(0.001, "volume"),
 
-    GRAM(0.001, "mass"), KG(1.0, "mass");
+    GRAM(0.001, "mass"), KG(1.0, "mass"),
+    TONNE(1000.0, "mass");
 
     String quantityName;
     double baseUnitConversion;
