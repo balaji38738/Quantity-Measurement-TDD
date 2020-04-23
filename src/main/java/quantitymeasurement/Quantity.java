@@ -6,7 +6,7 @@ public class Quantity {
 
     public Quantity(Unit UNIT, double VALUE) throws QuantityException {
         this.UNIT = UNIT;
-        if (VALUE < 0.0)
+        if (VALUE < 0.0 && !UNIT.quantityName.equals("temperature"))
             throw new QuantityException(QuantityException.ExceptionType.INVALID_VALUE,
                     "Value can't be negative");
         this.VALUE = VALUE;
