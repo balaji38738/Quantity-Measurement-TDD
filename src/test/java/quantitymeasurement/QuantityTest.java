@@ -293,7 +293,7 @@ public class QuantityTest {
 
     @Test
     public void givenNegativeTemperature_shouldNotThrowException() throws QuantityException {
-        Quantity fahrenheit = new Quantity(Unit.FAHRENHEIT, -212.0);
+        Quantity fahrenheit = new Quantity(Unit.FAHRENHEIT, -148.0);
         Quantity celsius = new Quantity(Unit.CELSIUS, -100.0);
         boolean compareCheck = Unit.compare(fahrenheit, celsius);
         Assert.assertTrue(compareCheck);
