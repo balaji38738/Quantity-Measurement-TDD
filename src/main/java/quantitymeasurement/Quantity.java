@@ -16,7 +16,7 @@ public class Quantity {
         return VALUE;
     }
 
-    public static Quantity getQuantityObject(String quantityName, double value) throws QuantityException {
+    public static Quantity getQuantity(String quantityName, double value) throws QuantityException {
         Quantity newQuantity = null;
         switch (quantityName) {
             case "length":
