@@ -16,6 +16,22 @@ public class Quantity {
         return VALUE;
     }
 
+    public static Quantity getQuantityObject(String quantityName, double value) throws QuantityException {
+        Quantity newQuantity = null;
+        switch (quantityName) {
+            case "length":
+                newQuantity = new Quantity(Unit.INCH, value);
+                break;
+            case "volume":
+                newQuantity = new Quantity(Unit.LITRE, value);
+                break;
+            case "mass":
+                newQuantity = new Quantity(Unit.KG, value);
+                break;
+        }
+        return newQuantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
