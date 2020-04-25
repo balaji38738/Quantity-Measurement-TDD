@@ -343,4 +343,15 @@ public class QuantityTest {
         Quantity expectedQuantity = new Quantity(Unit.GRAM, 2400.0);
         Assert.assertEquals(expectedQuantity, massSum);
     }
+
+    @Test
+    public void givenKgForLengthAddition_shouldThrowException() {
+        try {
+            Quantity feet = new Quantity(Unit.FEET, 1.0);
+            Quantity inch = new Quantity(Unit.INCH, 12.0);
+            operations.add(feet, inch, Unit.KG);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.INVALID_QUANTITY_UNIT, e.type);
+        }
+    }
 }

@@ -14,9 +14,12 @@ public class OperationsImpl implements Operations {
         if (!quantity1.UNIT.quantityName.equals(quantity2.UNIT.quantityName))
             throw new QuantityException(QuantityException.ExceptionType.UNLIKE_QUANTITIES,
                     "Unlike quantity addition");
-        if(quantity1.UNIT.quantityName == QuantityName.TEMPERATURE)
+        if (quantity1.UNIT.quantityName == QuantityName.TEMPERATURE)
             throw new QuantityException(QuantityException.ExceptionType.NON_ADDITIVE_QUANTITY,
                     "Temperature can't be added");
+        if (userUnit.quantityName != quantity1.UNIT.quantityName)
+            throw new QuantityException(QuantityException.ExceptionType.INVALID_QUANTITY_UNIT,
+                    "Invalid unit for given quantity");
         double sum = quantity1.getValue() * quantity1.UNIT.baseUnitConversion +
                 quantity2.getValue() * quantity2.UNIT.baseUnitConversion;
         return new Quantity(userUnit, sum / userUnit.baseUnitConversion);
