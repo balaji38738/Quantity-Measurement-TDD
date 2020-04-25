@@ -11,6 +11,7 @@ public class Quantity {
                     "Value can't be negative");
         this.VALUE = VALUE;
     }
+
     public Unit getUnit() { return UNIT; }
 
     public double getValue() {
