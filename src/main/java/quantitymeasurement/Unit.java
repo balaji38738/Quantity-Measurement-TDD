@@ -32,12 +32,4 @@ public enum Unit {
         this.additionConstant = additionConstant;
     }
 
-    public static boolean compare(Quantity quantity1, Quantity quantity2) throws QuantityException {
-        if (quantity1.UNIT.quantityName != quantity2.UNIT.quantityName)
-            throw new QuantityException(QuantityException.ExceptionType.UNLIKE_QUANTITIES,
-                    "Invalid Comparison");
-        return Double.compare(quantity1.getValue() * quantity1.UNIT.baseUnitConversion + quantity1.UNIT.additionConstant,
-                quantity2.getValue() * quantity2.UNIT.baseUnitConversion + quantity2.UNIT.additionConstant) == 0;
-    }
-
 }
