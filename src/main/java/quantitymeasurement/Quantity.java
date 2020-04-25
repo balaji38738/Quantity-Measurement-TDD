@@ -17,7 +17,7 @@ public class Quantity {
     }
 
     public static Quantity getQuantity(String quantityName, double value) throws QuantityException {
-        Quantity newQuantity = null;
+        Quantity newQuantity;
         switch (quantityName) {
             case "length":
                 newQuantity = new Quantity(Unit.INCH, value);
@@ -28,6 +28,9 @@ public class Quantity {
             case "mass":
                 newQuantity = new Quantity(Unit.KG, value);
                 break;
+            default:
+                newQuantity = null;
+                break;
         }
         return newQuantity;
     }
@@ -37,7 +40,7 @@ public class Quantity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Quantity quantity = (Quantity) o;
-        return Double.compare(quantity.VALUE, VALUE) == 0 && UNIT == quantity.UNIT;
+        return Math.abs(quantity.VALUE - VALUE) <= 0.02 && UNIT == quantity.UNIT;
     }
 
 }

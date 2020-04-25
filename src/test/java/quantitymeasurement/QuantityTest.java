@@ -232,7 +232,7 @@ public class QuantityTest {
         Quantity gallon = new Quantity(Unit.GALLON, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 3.78);
         Quantity volumeAddition = operations.add(gallon, litre);
-        Quantity expectedQuantity = new Quantity(Unit.LITRE, 7.56);
+        Quantity expectedQuantity = new Quantity(Unit.LITRE, 7.57);
         Assert.assertEquals(expectedQuantity, volumeAddition);
     }
 
