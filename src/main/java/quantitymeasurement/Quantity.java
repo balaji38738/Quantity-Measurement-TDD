@@ -1,7 +1,7 @@
 package quantitymeasurement;
 
 public class Quantity {
-    public final Unit UNIT;
+    private final Unit UNIT;
     private final double VALUE;
 
     public Quantity(Unit UNIT, double VALUE) throws QuantityException {
@@ -11,6 +11,7 @@ public class Quantity {
                     "Value can't be negative");
         this.VALUE = VALUE;
     }
+    public Unit getUnit() { return UNIT; }
 
     public double getValue() {
         return VALUE;
