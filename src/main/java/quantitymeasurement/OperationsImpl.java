@@ -6,7 +6,7 @@ public class OperationsImpl implements Operations {
         if (!quantity1.UNIT.quantityName.equals(quantity2.UNIT.quantityName))
             throw new QuantityException(QuantityException.ExceptionType.UNLIKE_QUANTITIES,
                     "Unlike quantity addition");
-        if(quantity1.UNIT.quantityName.equals("temperature"))
+        if(quantity1.UNIT.quantityName == QuantityName.TEMPERATURE)
             throw new QuantityException(QuantityException.ExceptionType.NON_ADDITIVE_QUANTITY,
                     "Temperature can't be added");
         double sum = quantity1.getValue() * quantity1.UNIT.baseUnitConversion +
