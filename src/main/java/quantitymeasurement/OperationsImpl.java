@@ -19,7 +19,6 @@ public class OperationsImpl implements Operations {
                     "Temperature can't be added");
         double sum = quantity1.getValue() * quantity1.UNIT.baseUnitConversion +
                 quantity2.getValue() * quantity2.UNIT.baseUnitConversion;
-        double valueInUserUnit = (sum - userUnit.additionConstant) / userUnit.baseUnitConversion;
-        return new Quantity(userUnit, valueInUserUnit);
+        return new Quantity(userUnit, sum / userUnit.baseUnitConversion);
     }
 }
