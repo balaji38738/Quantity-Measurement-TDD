@@ -31,5 +31,4 @@ public enum Unit {
         this.quantityName = quantityName;
         this.additionConstant = additionConstant;
     }
-
 }

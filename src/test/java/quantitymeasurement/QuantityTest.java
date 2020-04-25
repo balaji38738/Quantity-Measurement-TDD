@@ -169,7 +169,7 @@ public class QuantityTest {
     @Test
     public void given2InchAnd2Inch_shouldReturn4Inch() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 2.0);
-        Quantity lengthSum = operations.add(inch, inch);
+        Quantity lengthSum = operations.add(inch, inch, Unit.INCH);
         Quantity expectedQuantity = new Quantity(Unit.INCH, 4.0);
         Assert.assertEquals(expectedQuantity, lengthSum);
     }
@@ -178,7 +178,7 @@ public class QuantityTest {
     public void given1FeetAnd2Inch_shouldReturn14Inch() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
         Quantity inch = new Quantity(Unit.INCH, 2.0);
-        Quantity lengthSum = operations.add(feet, inch);
+        Quantity lengthSum = operations.add(feet, inch, Unit.INCH);
         Quantity expectedQuantity = new Quantity(Unit.INCH, 14.0);
         Assert.assertEquals(expectedQuantity, lengthSum);
     }
@@ -186,7 +186,7 @@ public class QuantityTest {
     @Test
     public void given1FeetAnd1Feet_shouldReturn24Inch() throws QuantityException {
         Quantity feet = new Quantity(Unit.FEET, 1.0);
-        Quantity lengthSum = operations.add(feet, feet);
+        Quantity lengthSum = operations.add(feet, feet, Unit.INCH);
         Quantity expectedQuantity = new Quantity(Unit.INCH, 24.0);
         Assert.assertEquals(expectedQuantity, lengthSum);
     }
@@ -195,7 +195,7 @@ public class QuantityTest {
     public void given2InchAnd2AndHalfCm_shouldReturn3Inch() throws QuantityException {
         Quantity inch = new Quantity(Unit.INCH, 2.0);
         Quantity cm = new Quantity(Unit.CM, 2.5);
-        Quantity lengthSum = operations.add(inch, cm);
+        Quantity lengthSum = operations.add(inch, cm, Unit.INCH);
         Quantity expectedQuantity = new Quantity(Unit.INCH, 3.0);
         Assert.assertEquals(expectedQuantity, lengthSum);
     }
@@ -231,7 +231,7 @@ public class QuantityTest {
     public void givenLitreAndGallon_shouldReturnAdditionInLitre() throws QuantityException {
         Quantity gallon = new Quantity(Unit.GALLON, 1.0);
         Quantity litre = new Quantity(Unit.LITRE, 3.78);
-        Quantity volumeAddition = operations.add(gallon, litre);
+        Quantity volumeAddition = operations.add(gallon, litre, Unit.LITRE);
         Quantity expectedQuantity = new Quantity(Unit.LITRE, 7.57);
         Assert.assertEquals(expectedQuantity, volumeAddition);
     }
@@ -240,7 +240,7 @@ public class QuantityTest {
     public void givenLitreAndMl_shouldReturnAdditionInLitre() throws QuantityException {
         Quantity ml = new Quantity(Unit.ML, 1000.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
-        Quantity volumeAddition = operations.add(litre, ml);
+        Quantity volumeAddition = operations.add(litre, ml, Unit.LITRE);
         Quantity expectedQuantity = new Quantity(Unit.LITRE, 2.0);
         Assert.assertEquals(expectedQuantity, volumeAddition);
     }
@@ -250,7 +250,7 @@ public class QuantityTest {
         Quantity feet = new Quantity(Unit.FEET, 10.0);
         Quantity litre = new Quantity(Unit.LITRE, 1.0);
         try {
-            operations.add(litre, feet);
+            operations.add(litre, feet, Unit.LITRE);
         } catch (QuantityException e) {
             Assert.assertEquals("Unlike quantity addition", e.getMessage());
         }
@@ -285,7 +285,7 @@ public class QuantityTest {
     public void given1TonneAnd1000Grams_shouldReturnSum1001Kg() throws QuantityException {
         Quantity tonne = new Quantity(Unit.TONNE, 1.0);
         Quantity grams = new Quantity(Unit.GRAM, 1000.0);
-        Quantity massSum = operations.add(tonne, grams);
+        Quantity massSum = operations.add(tonne, grams, Unit.KG);
         Quantity expectedQuantity = new Quantity(Unit.KG, 1001.0);
         Assert.assertEquals(expectedQuantity, massSum);
     }
@@ -311,9 +311,36 @@ public class QuantityTest {
         try {
             Quantity fahrenheit = new Quantity(Unit.FAHRENHEIT, -212.0);
             Quantity celsius = new Quantity(Unit.CELSIUS, -100.0);
-            operations.add(fahrenheit, celsius);
+            operations.add(fahrenheit, celsius, Unit.CELSIUS);
         } catch (QuantityException e) {
             Assert.assertEquals(QuantityException.ExceptionType.NON_ADDITIVE_QUANTITY, e.type);
         }
+    }
+
+    @Test
+    public void given1YardAnd1Feet_shouldReturn4Feet() throws QuantityException {
+        Quantity yard = new Quantity(Unit.YARD, 1.0);
+        Quantity feet = new Quantity(Unit.FEET, 1.0);
+        Quantity lengthSum = operations.add(yard, feet, Unit.FEET);
+        Quantity expectedQuantity = new Quantity(Unit.FEET, 4.0);
+        Assert.assertEquals(expectedQuantity, lengthSum);
+    }
+
+    @Test
+    public void givenLitreAndGallon_shouldReturnGallon() throws QuantityException {
+        Quantity litre = new Quantity(Unit.LITRE, 3.78);
+        Quantity gallon = new Quantity(Unit.GALLON, 2.0);
+        Quantity volumeSum = operations.add(litre, gallon, Unit.GALLON);
+        Quantity expectedQuantity = new Quantity(Unit.GALLON, 3.0);
+        Assert.assertEquals(expectedQuantity, volumeSum);
+    }
+
+    @Test
+    public void given2KgAnd400Grams_shouldReturn2400Grams() throws QuantityException {
+        Quantity kg = new Quantity(Unit.KG, 2.0);
+        Quantity grams = new Quantity(Unit.GRAM, 400.0);
+        Quantity massSum = operations.add(kg, grams, Unit.GRAM);
+        Quantity expectedQuantity = new Quantity(Unit.GRAM, 2400.0);
+        Assert.assertEquals(expectedQuantity, massSum);
     }
 }
